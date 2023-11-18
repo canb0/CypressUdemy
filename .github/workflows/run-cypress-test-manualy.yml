@@ -38,16 +38,20 @@ jobs:
         with:
           channel-id: "CHANNEL_ID"
           payload: | 
-            {"text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"}
+            {"text": "GitHub Action build result: ${{ job.status }}
+            "text": ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEB_HOOK }}
+          GH_TOKEN: ${{ github.token }}
        
       - name: Send Notification to Slack if Failure
         uses: slackapi/slack-github-action@v1.24.0
         if: failure() 
         with:
           channel-id: "CHANNEL_ID"
-          payload: |
-            {"text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"}
+          payload: | 
+            {"text": "GitHub Action build result: ${{ job.status }}\n
+            "text": ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEB_HOOK }}
+          GH_TOKEN: ${{ github.token }}
