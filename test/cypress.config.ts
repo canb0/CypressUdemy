@@ -13,7 +13,7 @@ export default defineConfig({
         video: false,
         viewportHeight: 1200,
         viewportWidth: 1900,
-        baseUrl: 'https://www.swtestacademy.com/',
+        baseUrl: process.env['URL'],
 
         setupNodeEvents(on, config) {
             on('task', {
