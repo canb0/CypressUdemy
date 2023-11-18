@@ -38,8 +38,9 @@ jobs:
         with:
           channel-id: "CHANNEL_ID"
           payload: | 
-            {"text": "GitHub Action build result: ${{ job.status }}
-            "text": ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
+            {
+              "text": "GitHub Action build result: ${{ job.status }}\n ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEB_HOOK }}
           GH_TOKEN: ${{ github.token }}
@@ -50,8 +51,9 @@ jobs:
         with:
           channel-id: "CHANNEL_ID"
           payload: | 
-            {"text": "GitHub Action build result: ${{ job.status }}\n
-            "text": ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
+            {
+              "text": "GitHub Action build result: ${{ job.status }}\n ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEB_HOOK }}
           GH_TOKEN: ${{ github.token }}
