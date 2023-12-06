@@ -36,13 +36,6 @@ jobs:
           npm install
           npx cypress run --browser ${{matrix.browser}}
 
-      - name: Screenshots upload
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: test/screenshots
-
       - name: Publish results to Slack if Test Fails
         uses: slackapi/slack-github-action@v1.24.0
         if: failure()
