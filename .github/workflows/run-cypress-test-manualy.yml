@@ -47,6 +47,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}   
+          GH_TOKEN: ${{ github.token }}
         with:
           payload: | 
             {
