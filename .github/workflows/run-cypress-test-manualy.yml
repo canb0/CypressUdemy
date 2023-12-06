@@ -37,7 +37,7 @@ jobs:
           npx cypress run --browser ${{matrix.browser}}
 
       - name: Screenshot Upload
-        uses: actions/upload-artifacts@v2
+        uses: actions/upload-artifact@v2
         with:
           name: cypress-screenshots
           path: test/screenshots
