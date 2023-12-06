@@ -30,7 +30,7 @@ jobs:
         run: |
           cd test
           npm install
-          npx cypress run --browser chrome
+          npx cypress run --browser firefox
 
       - name: Screenshots upload
         uses: actions/upload-artifact@v2
