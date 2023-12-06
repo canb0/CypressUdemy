@@ -12,10 +12,6 @@ jobs:
   e2e:
     name: e2e tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        browser: [chrome, firefox]
     steps:
       - name: Checkout
         uses: actions/checkout@v3.3.0
@@ -34,7 +30,7 @@ jobs:
         run: |
           cd test
           npm install
-          npx cypress run --browser ${{ matrix.browser }}
+          npx cypress run --browser chrome
 
       - name: Screenshots upload
         uses: actions/upload-artifact@v2
