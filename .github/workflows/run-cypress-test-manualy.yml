@@ -42,3 +42,14 @@ jobs:
         with:
           name: cypress-screenshots
           path: test/screenshots
+
+      - name: Publish results to Slack if Test Fails
+        uses: slackapi/slack-github-action@v1.24.0
+        if: failure()
+        with:
+          payload: | 
+            {
+              "text": "GitHub Action build result: ${{ job.status }}\n ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEB_HOOK }}
