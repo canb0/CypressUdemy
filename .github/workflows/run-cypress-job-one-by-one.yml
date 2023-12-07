@@ -1,4 +1,4 @@
-name: Manual run Cypress Tests
+name: Run Cypress Tests with Cache
 
 on:
   workflow_dispatch:
